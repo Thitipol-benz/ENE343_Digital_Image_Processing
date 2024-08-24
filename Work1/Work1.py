@@ -1,6 +1,6 @@
 # Convert your color image to grayscale image
 # Plot your grayscale image's histrogram
-# Convert the grayscale image to binary image
+# Convert the grayscale image to binary im
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
