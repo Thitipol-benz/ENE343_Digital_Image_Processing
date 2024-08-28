@@ -57,8 +57,7 @@ new_threshold = iterative_threshold(gray_image)
 # Convert to Binary Image
 _, thresholded_image = cv2.threshold(gray_image, new_threshold, 255, cv2.THRESH_BINARY)
 
-# Show result
-
+# Show Binary Image
 plt.imshow(thresholded_image, cmap='gray')
 plt.title('Binary Image using Average Intensities Method')
 plt.show()
