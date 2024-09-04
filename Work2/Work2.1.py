@@ -13,16 +13,6 @@ gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 hist = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
 hist = hist.flatten()  
 
-# Plot the histogram
-plt.figure()
-plt.title("Grayscale Histogram")
-plt.xlabel("Intensity")
-plt.ylabel("Pixel Number")
-plt.xlim([0, 256])
-plt.bar(range(256), hist, width=1, edgecolor='black')
-plt.plot(hist)
-plt.show()
-
 # Find peaks
 peaks, _ = find_peaks(hist)
 pks = hist[peaks]
@@ -55,6 +45,18 @@ I = np.argmax(diff)
 
 # Threshold for binarization
 threshold_pos = position1 + I
+
+# Plot the histogram and threshold position
+plt.figure()
+plt.title("Grayscale Histogram with Threshold")
+plt.xlabel("Intensity")
+plt.ylabel("Pixel Number")
+plt.xlim([0, 256])
+plt.bar(range(256), hist, width=1, edgecolor='black')
+plt.plot(hist, color='blue')
+plt.axvline(x=threshold_pos, color='r', linestyle='--', label=f'Threshold = {threshold_pos}')
+plt.legend()
+plt.show()
 
 # Create binary image
 binarize = np.where(gray_image > threshold_pos, 1, 0)

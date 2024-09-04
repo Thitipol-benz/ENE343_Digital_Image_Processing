@@ -11,15 +11,6 @@ gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 # Calculate histogram using a for loop
 hist = cv2.calcHist([gray_image], [0], None, [256], [0, 256])
 
-# Plot the histogram
-plt.figure()
-plt.title("Grayscale Histogram")
-plt.xlabel("Intensity")
-plt.ylabel("Pixel Number")
-plt.xlim([0, 256])
-plt.bar(range(256), hist.flatten(), width=1, edgecolor='black')
-plt.show()
-
 # Declare function | random Th = 150, repeat = 10
 def iterative_threshold(gray_image, initial_threshold = 150, repeat = 10):
     Th = initial_threshold
@@ -56,6 +47,19 @@ new_threshold = iterative_threshold(gray_image)
 
 # Convert to Binary Image
 _, thresholded_image = cv2.threshold(gray_image, new_threshold, 255, cv2.THRESH_BINARY)
+
+# Plot the histogram
+plt.figure()
+plt.title("Grayscale Histogram")
+plt.xlabel("Intensity")
+plt.ylabel("Pixel Number")
+plt.xlim([0, 256])
+plt.bar(range(256), hist.flatten(), width=1, edgecolor='black')
+
+# Add vertical line for threshold
+plt.axvline(x=new_threshold, color='r', linestyle='--', label=f'Threshold = {new_threshold:.2f}')
+plt.legend()
+plt.show()
 
 # Show Binary Image
 plt.imshow(thresholded_image, cmap='gray')
