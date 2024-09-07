@@ -31,7 +31,10 @@ plt.show()
 pdf = hist / np.sum(hist)
 
 # 3. Find Commulative Distributiion Function
-cdf = pdf.cumsum()
+cdf = np.zeros(256)
+cdf[0] = pdf[0]
+for i in range(1, 256):
+    cdf[i] = cdf[i - 1] + pdf[i]
 
 # 4. Change the gray level
 cdf_normalized = (255 * cdf).astype(np.uint8)
@@ -79,7 +82,10 @@ plt.show()
 pdf = hist2 / np.sum(hist2)
 
 # 3. Find Cumulative Distribution Function 
-cdf = pdf.cumsum()
+cdf = np.zeros(256)
+cdf[0] = pdf[0]
+for i in range(1, 256):
+    cdf[i] = cdf[i - 1] + pdf[i]
 
 # 4. Change the gray level
 cdf_normalized = (cdf * 255).astype(np.uint8)
