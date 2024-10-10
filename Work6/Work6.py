@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # 1. import and change to binary image
 image = cv2.imread('UTK.jpg', cv2.IMREAD_GRAYSCALE)
-_, image_binary = cv2.threshold(image, 128, 255, cv2.THRESH_BINARY)
+_, image_binary = cv2.threshold(image, 128, 1, cv2.THRESH_BINARY)
 
 # 2. Create Morphological
 se = rectangle(4, 32)
