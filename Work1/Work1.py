@@ -56,9 +56,21 @@ binaryimage = np.zeros_like(grayimage)
 for i in range(rows):
     for j in range(cols):
         if grayimage[i, j] < threshold:
-            binaryimage[i, j] = 1
-        else:
             binaryimage[i, j] = 0
+        else:
+            binaryimage[i, j] = 1
+
+
+
+# แสดงค่าพิกเซลของภาพไบนารีที่ตำแหน่ง (x, y)
+x, y = 100, 100  # เลือกตำแหน่งที่ต้องการ
+binary_pixel_value = binaryimage[y, x]
+
+print(f'ค่าพิกเซลของภาพไบนารีที่ตำแหน่ง ({x}, {y}): {binary_pixel_value}')
+
+# แสดงพิกเซลทั้งภาพ (Optional)
+print("แสดงพิกเซลของภาพไบนารีทั้งหมด:")
+print(binaryimage)
 
 # Show binary image
 plt.figure()
